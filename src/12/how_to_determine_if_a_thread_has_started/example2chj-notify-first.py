@@ -23,7 +23,8 @@ class PeriodicTimer:
 				self._cv.notify_all()
 			
 			# chj: sleep() *after* notify.
-			# and we can see that: the _cv.notify_all() above won't wake up existing _cv.wait()
+			# and we can see that: the _cv.notify_all() above won't wake up 
+			# other thread's later _cv.wait()
 			time.sleep(self._interval) 
 
 	def wait_for_tick(self, myid):
