@@ -1,3 +1,4 @@
+import time
 import threading
 from deadlock import acquire
 
@@ -14,13 +15,11 @@ chopsticks = [threading.Lock() for n in range(NSTICKS)]
 # Create all of the philosophers
 for n in range(NSTICKS):
     t = threading.Thread(target=philosopher,
-                         args=(chopsticks[n],chopsticks[(n+1) % NSTICKS]))
+            args=(chopsticks[n],chopsticks[(n+1) % NSTICKS]))
     t.daemon = True
     t.start()
 
-import time
 while True:
     time.sleep(1)
-
 
 
